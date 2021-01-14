@@ -26,7 +26,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">Dari Dinas</th>
+                <th scope="col" class="text-warning">Dari Sekolah</th>
                 <th scope="col">Kecamatan</th>
                 <th scope="col"><b>Detail</b></th>
             </tr>
@@ -34,9 +34,9 @@
         <tbody>
             <?php foreach ($tps as $key) { ?>
             <tr>
-                <td><?= $key['nama_dinas'] ?></td>
+                <td><?= $key['nama_sekolah'] ?></td>
                 <td><?= $key['kecamatan'] ?></td>
-                <td><a href="<?php echo base_url() . 'home/detailpermintaan/' . $key['id']; ?>" class="btn btn-warning"><i
+                <td><a href="<?php echo base_url() . 'home/detailpermintaan/' . $key['npsn']; ?>" class="btn btn-warning"><i
                             class="fa fa-info-circle"></i></a></td>
             </tr>
             <?php } ?>

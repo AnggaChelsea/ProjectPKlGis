@@ -2,7 +2,7 @@
         <section class="section">
           <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12" >
-              <div class="card card-statistic-2 transparant" style="background-image:url(<?= base_url('template/assets/img/peta/peta.jpg') ?>)">>
+              <div class="card card-statistic-2 transparant" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/8/88/Locator_kabupaten_sukabumi.png')">
                 <div class="card-stats">
                   <div class="card-stats-title">Perubahan Stastistic - 
                     <div class="dropdown d-inline">

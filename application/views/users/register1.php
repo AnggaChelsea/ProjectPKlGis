@@ -26,22 +26,22 @@
 
         <div class="wrapper">
             <div class="inner">
-                <form action="<?= base_url('home/registration'); ?>" method="POST">
+           
+                <form action="<?= base_url('home/registration'); ?>" enctype="multipart/form-data" method="POST">
                     <h3>Pemetaan Kegiatan</h3>
                     
                     <div class="form-row">
                         <div class="form-wrapper">
-                            <label for="">Nama *</label>
+                            <label for="">Nama Lengkap *</label>
                             <span class="lnr "></span>
                             <input type="text" class="form-control " name="nama" value="<?= set_value('nama'); ?>" placeholder="Exaulia..">
                              <span style="color: red;"><?= form_error('nama', '<span class="text-danger pl-3">', '<span>'); ?></span>
                         </div>
                         <div class="form-wrapper">
-                            <label for="">Dinas *</label>
+                            <label for="">Nama  Sekolah *</label>
                             <span class="lnr "></span>
-                            <input type="text" class="form-control " name="dinas" value="<?= set_value('dinas'); ?>" placeholder="experhutanan">
+                            <input type="text" class="form-control " name="sekolah" value="<?= set_value('sekolah'); ?>" placeholder="Smk .....">
                         </div>
-
                     </div>
 
 
@@ -72,6 +72,11 @@
                             <input type="password" class="form-control " name="password2" placeholder="*********">
                         </div>
                     </div>
+                    <div class="form-wrapper">
+                            <label for="">image *</label>
+                            <span class="lnr "></span>
+                            <input type="file" class="form-control " name="photo" value="<?= set_value('photo'); ?>" placeholder="experhutanan">
+                        </div>
                    
                    
                     <button type="submit" data-text="Go Pemetaan">

@@ -19,7 +19,7 @@
             style="position: absolute; margin-top: -40px; margin-left: 220px;">cari</button>
     </form>
     <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#newMenuModal" onclick="add()"
-        style="color:White; widht:bold; float: right;">
+        style="color:White; float: right;">
         Tambah Peta
     </button>
     <?php echo form_close() ?>
@@ -29,8 +29,8 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">No</th>
-                <th scope="col">Nama Dinas</th>
+                <th scope="col">NPSN</th>
+                <th scope="col">Nama Sekolah</th>
                 <th scope="col">Kecamatan</th>
                 <th scope="col">Coordinate</th>
                 <th scop="col"><b>Hapus</b></th>
@@ -41,16 +41,16 @@
         <tbody>
             <?php foreach ($tps as $key) { ?>
             <tr>
-                <th scope="row"><?= $key['kode_tps'] ?></th>
-                <td><?= $key['nama_tps'] ?></td>
+                <th scope="row"><?= $key['npsn'] ?></th>
+                <td><?= $key['nama_sekolah'] ?></td>
                 <td><?= $key['kecamatan'] ?></td>
                 <td><?= $key['latitude'] ?>, <?= $key['longitude'] ?></td>
-                <td><a href="<?php echo base_url() . 'home/hapus/' . $key['id']; ?>" class="btn btn-danger"><i
+                <td><a href="<?php echo base_url() . 'home/hapus/' . $key['npsn']; ?>" class="btn btn-danger"><i
                             class="fa fa-trash btn-sm"></i></a></td>
-                <td><a href="<?php echo base_url() . 'home/detail/' . $key['id']; ?>" class="btn btn-warning"><i
+                <td><a href="<?php echo base_url() . 'home/detail/' . $key['npsn']; ?>" class="btn btn-warning"><i
                             class="fa fa-info-circle"></i></a></td>
                 <td>
-                    <a href="<?= base_url() .'home/detail/' . $key['id']; ?>" class="btn btn-primary"><i class="fa fa-edit btn-sm" style="color:white"></i></a>
+                    <a href="<?= base_url() .'home/detail/' . $key['npsn']; ?>" class="btn btn-primary"><i class="fa fa-edit btn-sm" style="color:white"></i></a>
                 </td>
             </tr>
             <?php } ?>

@@ -47,8 +47,8 @@
         {
           "type": "Feature",
           "properties": {
-            "nama_tps": "<?= $key['nama_tps'] ?>",
-            "lokasi": "<?= $key['lokasi'] ?>",
+            "nama_tps": "<?= $key['nama_sekolah'] ?>",
+            "lokasi": "<?= $key['alamat'] ?>",
             "kecamatan": "<?= $key['kecamatan'] ?>"
           },
           "geometry": {
@@ -67,7 +67,7 @@
    
     var _layerA = L.geoJson(_points, {
       onEachFeature: function(feature, layer){
-          layer.bindPopup('tempat:'+feature.properties.nama_tps+'<br/>lokasi:'+feature.properties.lokasi+'<br/>Kecamatan:'+feature.properties.kecamatan+'')      
+          layer.bindPopup('tempat:'+feature.properties.nama_sekolah+'<br/>lokasi:'+feature.properties.alamat+'<br/>Kecamatan:'+feature.properties.kecamatan+'')      
     }
     });
    
@@ -111,26 +111,6 @@
 
 
   </script>
-
-<style type="text/css">
-    <style leaflet-browser-print-content>
-    .grid-print-container { // grid holder that holds all content (map and any other content)
-        grid-template: auto 1fr auto / 1fr;
-        background-color: orange;
-    }
-    .grid-map-print { // map container itself
-        grid-row: 1;
-    }
-    .title { // Dynamic title styling
-        grid-row: 1;
-        justify-self: center;
-        color: white;
-    }
-    .sub-content { // Dynamic sub content styling
-        grid-row: 0;
-        padding-left: 5px;
-    }
-</style>
 
   </div>
 </div>

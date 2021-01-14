@@ -10,8 +10,24 @@ class M_tps extends CI_Model
     public function get_all_data()
     {
         $this->db->select('*');
-        $this->db->from('tbl_tps');
+        $this->db->from('mytable');
         return $this->db->get()->result_array();
+    }
+
+    public function getfuzy()
+    {
+        $this->db->select('*');
+        $this->db->form('fuzy');
+        return $this->db->get()->result_array();
+    }
+
+    //ini untuk data user sekolah
+    public function get_data_user_sekolah()
+    {
+        $this->db->select('*');
+        $this->db->from('users');
+        return $this->db->get()->result_array();
+
     }
 
 
@@ -32,7 +48,7 @@ class M_tps extends CI_Model
     public function permintaan()
     {
         $this->db->select('*');
-        $this->db->from('permintaan');
+        $this->db->from('mytable');
         return $this->db->get()->result_array();
     }
 

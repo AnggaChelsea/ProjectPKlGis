@@ -2,14 +2,14 @@
 <div class="main-sidebar sidebar-style-2" style="margin-top:-10px;">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="">Pemetaan Bappeda</a>
+            <a href="">Pemetaan Sekolah</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="index.html">M'B</a>
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header" style="text-align:center; color:green;">
-                <img src="<?= base_url() ?>template/assets/img/logo.png" widht="30px" height="40px" alt=""
+                <img src="https://cdn1-production-images-kly.akamaized.net/Kt-lmOFAbnWk1Hd-M3eTeT5io0E=/640x480/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/1658477/original/069760900_1500971383-Banner_Infografis_Jorban_Salah_Sebut_Gedung_Putih_banner.jpg" widht="30px" height="40px" alt=""
                     style="margin-top:-10px;">
             </li>
           

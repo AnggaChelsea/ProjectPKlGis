@@ -28,7 +28,7 @@
 <!-- Modal -->
 
 
-            <br><span> Copy and <a href="<?= base_url('home/profile') ?>" class="btn btn-primary" data-toggle="modal" data-target="#newMenuModal">Kirim to admin</a> </span>
+            <br><span>ini coordinate<a href="<?= base_url('home/profile') ?>" class="btn btn-primary" data-toggle="modal" data-target="#newMenuModal">yang kamu click</a> </span>
         
         </div>
 
@@ -84,7 +84,7 @@ function main() {
                 }).addTo(map);
 
     let marker = L.marker([-6.981874, 106.556569]).addTo(map)
-        .bindPopup('Kantor Bappeda Sukabumi')
+        .bindPopup('titik lokasi pelabuhanratu')
         .openPopup();
     routeWhileDragging: true
 

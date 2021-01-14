@@ -20,9 +20,9 @@
                                     </div>
                                     <div class="form-group">
                                         <input style="color: blue;" type="text" class="form-control form-control-user"
-                                            name="dinas" autocomplete="off" placeholder="Nama Dinas"
-                                            value="<?= set_value('dinas'); ?>" id="dinas">
-                                        <?= form_error('dinas', '<span class="text-danger pl-3">', '<span>'); ?>
+                                            name="sekolah" autocomplete="off" placeholder="Nama Sekolah"
+                                            value="<?= set_value('sekolah'); ?>" id="sekolah" value="<?= set_value('sekolah'); ?>">
+                                        <?= form_error('sekolah', '<span class="text-danger pl-3">', '<span>'); ?>
                                     </div>
 
                                     <div class="form-group">

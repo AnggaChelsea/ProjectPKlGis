@@ -93,8 +93,8 @@
                                 <i class="far fa-user"></i> Profile
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a href="<?= base_url('home/editprofile') ?>" class="dropdown-item has-icon ">
-                                <i class="fa fa-code"></i>Upadte Profile
+                            <a href="<?= base_url('home/fuzy') ?>" class="dropdown-item has-icon ">
+                                <i class="fa fa-code"></i>Lengkapi data sekolah
                             </a>
                             <div class="dropdown-divider"></div>
                             <a href="<?= base_url('home/logout') ?>" class="dropdown-item has-icon text-danger">

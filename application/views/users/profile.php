@@ -86,8 +86,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                <span style="color:red;"> Ambil Data Coordinat sesuai dengan titik yang tepat </span><a
-                    href="<?= base_url('home/coordinat') ?>">Get Coordinate</a>
+                <span style="color:red;"> Ambil Data Coordinat sesuai dengan titik anda </span>
+                <a class="btn btn-outline-success" onclick="getLocation()">Koordinate saya</a><br>
+                    <p id="demo"></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" id="btnSavee" onclick="Savee()"
@@ -96,3 +97,18 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+           let getId = document.getElementById('demo');
+           function getLocation(){
+               if(navigator.geolocation){
+                   navigator.geolocation.getCurrentPosition(showPosition);
+               }else{
+                   getId.innerHTML = 'location tidak terdeteksi karna jaringan atau aplikasi tidak mendukung';
+               }
+           }
+
+           function showPosition(position){
+            getId.innerHTML = 'latitude' + position.coords.latitude + '<br/ > longitude ' + position.coords.longitude
+           }
+</script>

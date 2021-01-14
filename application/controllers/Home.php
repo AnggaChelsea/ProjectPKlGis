@@ -18,8 +18,6 @@ class Home extends CI_Controller
         $this->load->library('form_validation');
         // cek_sesi();
         $this->user = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-        
-        
        
     }
 
@@ -156,6 +154,8 @@ class Home extends CI_Controller
         $this->load->view('template/v_wrapper', $data, FALSE);
     }
 
+    
+
     public function perminatan()
     {
         $data = array(
@@ -177,6 +177,17 @@ class Home extends CI_Controller
         );
         $this->load->view('template/v_wrapper', $data, FALSE);
     }
+
+     //get semua user sekolah
+     public function getAllUserSekolah()
+     {
+        $data = array(
+            'anjay' => $this->m_tps->get_data_user_sekolah(),
+            'isi' => 'users/dashboard',
+            'user' => $this->user
+        );
+        $this->load->view('template/v_wrapper', $data, FALSE);
+     }
 
     public function routing()
     {
@@ -229,7 +240,7 @@ class Home extends CI_Controller
     public function editdata()
     {
         $data = array(
-            'title' => 'Pemetaan Kegiatan ata Map',
+            'title' => 'Mangement Data Sekolah',
             'tps' => $this->m_tps->get_all_data(),
             'isi' => 'tps/v_editdata',
             'user' => $this->user
@@ -696,7 +707,8 @@ class Home extends CI_Controller
                 [
                     'nama' => htmlspecialchars($this->input->post('nama', true)),
                     'email' => htmlspecialchars($this->input->post('email', true)),
-                    'dinas' => htmlspecialchars($this->input->post('dinas')),
+                    'sekolah' => htmlspecialchars($this->input->post('sekolah', true)),
+                    'phone' => htmlspecialchars($this->input->post('phone', true)),
                     'image' => 'default.jpg',
                     'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                     'role_id' => 2,
@@ -709,7 +721,7 @@ class Home extends CI_Controller
             //ini saya mambil alert dari boostraap dan si session ini di masukan atau di slipkan
             //ke dalam page login ,, dengan format $this->session->flashdata('nama pesan sessionnya(message)')
             $this->session->set_flashdata('message', '<div class="alert alert-success" style="text-align:center;" role="alert"> Selamat anda sudah terdaftar. Langsung Login yah</div>');
-            redirect('home/index');
+            redirect('');
             // field email gak ada
         }
     }
@@ -719,9 +731,22 @@ class Home extends CI_Controller
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('role_id');
         $this->session->set_flashdata('message', '<div class="alert alert-success" style="text-align:center;" role="alert"> Logout Berhasil </div>');
-        redirect('home/index');
+        redirect('');
     }
 
+
+   //ini get fuzy
+
+   public function fuzy()
+   {
+       $data = array(
+           'title'=>'lengkapi data',
+           'fuzyget'=>$this->m_tps->getfuzy(),
+           'isi'=> 'fuzy/index',
+           'user'=>$this->user
+       );
+       $this->load->view('template/v_wrapper', $data, FALSE);
+   }
 
 
     //?ini khusus admin
@@ -729,7 +754,8 @@ class Home extends CI_Controller
     public function dashboard()
     {
         $data = array(
-            'title' => 'Dashboard',
+            'title' => 'Semua User Sekolah',
+            'anjay' => $this->m_tps->get_data_user_sekolah(),
             'isi' => 'users/dashboard',
             'user' => $this->user
         );

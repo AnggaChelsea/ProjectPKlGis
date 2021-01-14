@@ -24,12 +24,12 @@
 		//ini data ngambil dari data base
 		var data = [
 		<?php foreach($tps as $key) {?>
-		{"lokasi":[<?= $key['latitude'] ?>,<?= $key['longitude'] ?>], "nama_tps":"<?= $key['nama_tps'] ?>"},
+		{"alamat":[<?= $key['latitude'] ?>,<?= $key['longitude'] ?>], "nama_sekolah":"<?= $key['nama_sekolah'] ?>"},
 		<?php } ?>
 		];
 
 			// var map = L.map('map', { drawControl: true }).setView([-6.923648, 107.615584], 2);
-			var map = new L.Map('map', {zoom: 9, center: new L.latLng(-6.923648, 107.615584) })
+			var map = new L.Map('map', {zoom: 9, center: new L.latLng(-6.91912, 106.92950) })
             map.addLayer(new L.tileLayer(
                 'http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
                     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
@@ -58,10 +58,10 @@
 			}) );
 
 			for(i in data) {
-			var nama_tps = data[i].nama_tps;	//value searched
-			var lokasi = data[i].lokasi;		//position found
-			var marker = new L.Marker(new L.latLng(lokasi), {title: nama_tps} );//se property searched
-			marker.bindPopup('nama Dinas: '+ nama_tps + ' <br> Coordinate ' + lokasi );
+			var nama_sekolah = data[i].nama_sekolah;	//value searched
+			var alamat = data[i].alamat;		//position found
+			var marker = new L.Marker(new L.latLng(alamat), {title: nama_sekolah} );//se property searched
+			marker.bindPopup('nama sekolah: '+ nama_sekolah + ' <br> Coordinate ' + alamat );
 			markersLayer.addLayer(marker);
 			}
 
@@ -97,20 +97,20 @@
 
 
 		     <style type="text/css">
-		    <style leaflet-browser-print-content>
-		    .grid-print-container { // grid holder that holds all content (map and any other content)
+		   
+		    .grid-print-container { 
 		        grid-template: auto 1fr auto / 1fr;
 		        background-color: orange;
 		    }
-		    .grid-map-print { // map container itself
+		    .grid-map-print {
 		        grid-row: 1;
 		    }
-		    .title { // Dynamic title styling
+		    .title { 
 		        grid-row: 1;
 		        justify-self: center;
 		        color: white;
 		    }
-		    .sub-content { // Dynamic sub content styling
+		    .sub-content { 
 		        grid-row: 0;
 		        padding-left: 5px;
 		    }

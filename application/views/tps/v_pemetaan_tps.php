@@ -10,7 +10,7 @@
 
             <script>
             
-            var map = L.map('map').setView([-6.923648, 107.615584], 7);
+            var map = L.map('map').setView([-6.91912, 106.92950], 7);
             L.tileLayer(
                 'http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
                     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
@@ -22,8 +22,8 @@
                 <?php foreach($tps as $key) { ?>
 
                 L.marker([<?= $key['latitude']?>, <?= $key['longitude'] ?>]).addTo(map)
-                .bindPopup('<h5><?= $key['nama_tps'] ?></h5> </p> <br>lokasi <?= $key['lokasi'] ?></br> kecamatan <?= $key['kecamatan'] ?>
-                </br> Kode Coordinate lat & Lng <br><?= $key['latitude'] ?>,&nbsp;<?= $key['longitude'] ?> <br>  ')
+                .bindPopup('<h5><?= $key['nama_sekolah'] ?></h5> </p> <br>lokasi <?= $key['alamat'] ?></br> kecamatan <?= $key['kecamatan'] ?>
+                </br> Kode Coordinate lat & Lng <br><?= $key['latitude'] ?>,&nbsp;<?= $key['longitude'] ?> <br><span class="text-danger"> jalan <?= $key['jalan'] ?> </span>  ')
                 .openPopup();
                 // z
                 <?php } ?>
