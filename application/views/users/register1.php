@@ -82,7 +82,9 @@
                     <button type="submit" data-text="Go Pemetaan">
                         <span>Register</span>
                     </button>
+                    <a href="<?= base_url('home/login')?>" style="float:right;">Sudah Daftar</a>
                 </form>
+                
             </div>
         </div>
         

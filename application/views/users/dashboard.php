@@ -16,7 +16,7 @@
     <div class="row">
     <?php foreach ($anjay as $key) { ?>
       <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-        <div class="bg-white rounded shadow-sm"><img src="https://asset.kompas.com/crops/fjKcRo8XOilNiRTqimbZz5nsw0k=/0x0:885x590/750x500/data/photo/2020/07/27/5f1e3e8b7d508.jpeg" alt="" class="img-fluid card-img-top">
+        <div class="bg-white rounded shadow-sm"><img src="<?= $key['image'] ?>" alt="" class="img-fluid card-img-top" height="60">
           <div class="p-4">
             <h5> <a href="#" class="text-dark"><?= $key['nama'] ?></a></h5>
             <p class="small  mb-0 text-warning">Nama Sekolah <br> <?= $key['sekolah']?></p>

@@ -93,7 +93,7 @@
                                 <i class="far fa-user"></i> Profile
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a href="<?= base_url('home/fuzy') ?>" class="dropdown-item has-icon ">
+                            <a href="../../../Algorithms/Logic_Alghorithma_Fuzy" class="dropdown-item has-icon ">
                                 <i class="fa fa-code"></i>Lengkapi data sekolah
                             </a>
                             <div class="dropdown-divider"></div>

@@ -25,10 +25,18 @@ class Home extends CI_Controller
     public function index()
     {
         $data = array(
-            'isi' => 'users/index'
+            'isi' => 'index'
         );
 
-        $this->load->view('users/index', $data, FALSE);
+        $this->load->view('index', $data, FALSE);
+    }
+
+    public function loginpage()
+    {
+        $data = array(
+            'isi' => 'users/login'
+        );
+        $this->load->view('user/login', $data, FALSE);
     }
 
     //mana tampilannya
@@ -94,6 +102,7 @@ class Home extends CI_Controller
         $data = array(
             'title' => 'Pemetaan Kegiatan router ',
             'isi' => 'v_router',
+            'data' => $this->m_tps->get_all_data(),
             'user' => $this->user
         );
         $this->load->view('template/v_wrapper', $data, FALSE);
@@ -152,6 +161,16 @@ class Home extends CI_Controller
             'user' => $this->user
         );
         $this->load->view('template/v_wrapper', $data, FALSE);
+    }
+
+    //mapping user only
+    public function useronly()
+    {
+        $data = array(
+            'tps'=>$this->m_tps->get_all_data(),
+            'isi'=>'tps/v_pemetaan_tps',
+        );
+        $this->load->view('tps/v_pemetaan_tps', $data, FALSE);
     }
 
     
@@ -406,10 +425,10 @@ class Home extends CI_Controller
 
             if ($this->m_tps->input_data($data) > 0) {
            $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert" style="color:black;">Data tersimpan</div>');
-            redirect('home/editdata');
+            redirect('home/profile');
             } else {
             $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert" style="color:black;">ada kesalahan </div>');
-            redirect('home/editdata');
+            redirect('');
         }
     }
 
@@ -599,9 +618,9 @@ class Home extends CI_Controller
         if ($this->form_validation->run() == false) {
 
             $data = array(
-                'isi' => 'users/index'
+                'isi' => 'users/login'
             );
-            $this->load->view('users/index', $data, FALSE);
+            $this->load->view('users/login', $data, FALSE);
         } else {
             //ini untuk validasi mengambil function di bawah
             $this->_proseslogin();
@@ -708,7 +727,7 @@ class Home extends CI_Controller
                     'nama' => htmlspecialchars($this->input->post('nama', true)),
                     'email' => htmlspecialchars($this->input->post('email', true)),
                     'sekolah' => htmlspecialchars($this->input->post('sekolah', true)),
-                    'phone' => htmlspecialchars($this->input->post('phone', true)),
+                    'phone' => htmlspecialchars($this->input->post('phone',true)),
                     'image' => 'default.jpg',
                     'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                     'role_id' => 2,
@@ -721,7 +740,7 @@ class Home extends CI_Controller
             //ini saya mambil alert dari boostraap dan si session ini di masukan atau di slipkan
             //ke dalam page login ,, dengan format $this->session->flashdata('nama pesan sessionnya(message)')
             $this->session->set_flashdata('message', '<div class="alert alert-success" style="text-align:center;" role="alert"> Selamat anda sudah terdaftar. Langsung Login yah</div>');
-            redirect('');
+            redirect('home/login');
             // field email gak ada
         }
     }

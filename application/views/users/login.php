@@ -43,7 +43,7 @@
                     <span class="login100-form-title p-b-34 p-t-27">
                         Masuk
                     </span>
-                     <div class="sukses" style="width: 100%;"> <?= $this->session->flashdata('message'); ?> </div>
+                     <!-- <div class="sukses" style="width: 100%;"> <?= $this->session->flashdata('message'); ?> </div> -->
 
                     <div class="wrap-input100 validate-input" data-validate = "Enter username">
                         <input class="input100" type="email" name="email" id="email" value="<?= set_value('email'); ?>">

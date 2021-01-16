@@ -15,8 +15,8 @@
             </div>
         </div>
         <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#newMenuModal" onclick="add()"
-        style="color:White; widht:bold; float: right;">
-        Daftar Pemetaan
+        style="color:White; float: right;">
+        Lengkapi Data
     </button>
     </div>
 </div>
@@ -28,12 +28,17 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-               <!--  <form action="<?= base_url('home/input_data') ?>" id="formData" method="post"> -->
+               
                     <?= form_open_multipart('home/input_data'); ?>
                     <div class="form-group">
-                        <label for="nama_tps">Coordinate lat & Lng</label>
-                        <input style="width: 100%;" type="text" value="" name="nama_tps" class="form-control"
-                            required="" placeholder="-83212212, 231122332 " id="nama_tps">
+                        <label for="nama_sekolah">NPSN</label>
+                        <input style="width: 100%;" minlength="8" maxlength="8" type="text" value="" name="nama_sekolah" class="form-control"
+                            required="" placeholder="83212212" id="demo">
+                    </div>
+                    <div class="form-group">
+                        <label for="alamat">Nama Sekolah</label>
+                        <input type="text" value="" name="nama_sekolah" class="form-control" required=""
+                            placeholder="Bappeda" id="nama_sekolah">
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -47,21 +52,54 @@
                                 placeholder="231122332" id="longitude">
                         </div>
                     </div>
+                    <a class="btn btn-outline-success" id="koordinatku" onclick="getLocation()">Koordinate saya</a><br>
+                    <p id="demo"></p>
+                    <p class="text=danger" id="status"></p>
+
                     <div class="form-group">
-                        <label for="nama_tps">Nama Dinas</label>
-                        <input type="text" value="" name="nama_tps" class="form-control" required=""
-                            placeholder="Bappeda" id="nama_tps">
+                        <label for="alamat">Alamat</label>
+                        <input type="text" value="" name="alamat" class="form-control" required=""
+                            placeholder="Bappeda" id="alamat">
                     </div>
                     <div class="form-group">
-                        <label for="lokasi">Wilayah</label>
-                        <input type="text" value="" name="lokasi" class="form-control" required=""
-                            placeholder="Pelabuhanratu" id="lokasi">
+                        <label for="desa">Wilayah</label>
+                        <input type="text" value="" name="desa" class="form-control" required=""
+                            placeholder="Pelabuhanratu" id="desa">
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group">
                             <label for="kecamatan">Kecamatan</label>
                             <input type="text" value="" name="kecamatan" class="form-control" required=""
                                 placeholder="Pelabuhanratu" id="kecamatan">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="jumlah_siswa">jumlah_siswa</label>
+                            <input type="text" value="" name="jumlah_siswa" class="form-control" required=""
+                                placeholder="200" id="jumlah_siswa">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="jumlah_guru">jumlah_guru</label>
+                            <input type="text" value="" name="jumlah_guru" class="form-control" required=""
+                                placeholder="0000" id="jumlah_guru">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="kepala_sekolah">kepala_sekolah</label>
+                            <input type="text" value="" name="kepala_sekolah" class="form-control" required=""
+                                placeholder="Pelabuhanratu" id="kepala_sekolah">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="kecamatan">Kreditasi</label>
+                            <select name="akreditasi" id="">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
@@ -87,8 +125,7 @@
             </div>
             <div class="modal-body">
                 <span style="color:red;"> Ambil Data Coordinat sesuai dengan titik anda </span>
-                <a class="btn btn-outline-success" onclick="getLocation()">Koordinate saya</a><br>
-                    <p id="demo"></p>
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" id="btnSavee" onclick="Savee()"
@@ -99,16 +136,34 @@
 </div>
 
 <script type="text/javascript">
-           let getId = document.getElementById('demo');
            function getLocation(){
-               if(navigator.geolocation){
-                   navigator.geolocation.getCurrentPosition(showPosition);
-               }else{
-                   getId.innerHTML = 'location tidak terdeteksi karna jaringan atau aplikasi tidak mendukung';
-               }
-           }
+               const status = document.getElementById('status');
+               const demo = document.getElementById('demo');
 
-           function showPosition(position){
-            getId.innerHTML = 'latitude' + position.coords.latitude + '<br/ > longitude ' + position.coords.longitude
-           }
+               demo.href = '';
+               demo.textContent = '';
+            }
+
+            function success(position){
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+
+                status.textContent = '';
+                demo.href = `https://google.maps/${latitiude}/${longitude}`;
+                demo.textContent = `latitude : ${latitude}, longitude ${longitude}`;
+            }
+
+            function error(){
+                status.textContent = 'map tidak terdeteksi karna jaringan memungkinka tidak bersahabat';
+
+            }
+            if(!navigator.geolocation){
+                status.textContent = 'geolocation tidak support di mobile or desktop anda';
+            }
+            else{
+                status.textContent = 'detek lokasimu ......'
+                navigator.geolocatoin.getCurrentPosition(success, error);
+            }
+
+            document.getElementById('koordinatku').addEventListener('click', geoFindMe)
 </script>

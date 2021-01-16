@@ -34,7 +34,7 @@ class M_tps extends CI_Model
     //ini untuk input data dari map
     public function input_data($data)
     {
-        $this->db->insert('tbl_map', $data);
+        $this->db->insert('mytable', $data);
         return $this->db->affected_rows();
     }
 
