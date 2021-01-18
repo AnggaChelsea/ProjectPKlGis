@@ -52,6 +52,13 @@ class M_tps extends CI_Model
         return $this->db->get()->result_array();
     }
 
+    //cart
+    public function cartjs(){
+        $this->db->select('*');
+        $this->db->from('mytable');
+        return $this->db->get()->result_array();
+    }
+
     //edit
     public function edit($where, $data, $table){
         $this->db->where($where);

@@ -243,6 +243,11 @@ MarkerOpacity.js
 
     <!-- Routing js--->
     <script src="<?= base_url() ?>routing/dist/leaflet-routing-machine.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
+    <!-- cdn cartjs -->
+    <script src="https://cdnjs.com/libraries/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
 
     <script type="text/javascript">
         $('.custom-file-input').on('change', function(){

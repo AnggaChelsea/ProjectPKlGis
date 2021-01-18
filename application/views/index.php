@@ -22,6 +22,19 @@
     <link rel="stylesheet" href="<?= base_url()?>template3/css/slick.css">
     <!-- style CSS -->
     <link rel="stylesheet" href="<?= base_url()?>template3/css/style.css">
+    <link rel="stylesheet" href="<?= base_url()?>template3/css/chart.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style type="text/css">
+    .container {
+  width: 80%;
+  margin: 20px auto;
+}
+
+.p {
+  text-align: center;
+  font-size: 14px;
+  padding-top: 140px;
+}</style>
 </head>
 
 <body>
@@ -51,7 +64,7 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="<?= base_url('home/useronly');?>">Liat Peta Sekolah</a>
-                                        <a class="dropdown-item" href="<?= base_url('home/datasekolah') ?>">Data List Sekolah</a>
+                                        <a class="dropdown-item" href="<?= base_url('home/chart') ?>">Chart semua sekolah</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">
@@ -134,17 +147,10 @@
                 </div>
             </div>
         </div>
+       
     </section>
     <!-- upcoming_event part start-->
 
-    <!-- learning part start-->
-   
-    <!-- learning part end-->
-
-    <!-- member_counter counter start -->
-   
-
-    <!--::review_part start::-->
     
 <script type="text/javascript" src="<?= base_url() ?>template3/main.js"></script>
 
@@ -262,7 +268,10 @@
                </div>
            </div>
        </div>
+    </div>
    </section>
+
+   
    <!-- learning part end-->
 
    <!--::review_part start::-->
@@ -275,7 +284,7 @@
                <div class="col-xl-5">
                    <div class="section_tittle text-center">
                        <p>Our Recoreder</p>
-                       <h2>Lokasi Sekolah yang butuh Dana</h2>
+                       <h2>Lokasi Sekolah yang Sangat Terpelosok</h2>
                    </div>
                </div>
            </div>
@@ -288,9 +297,9 @@
                            <div class="card-body">
                                <a href="#" class="btn_4">SDN MAJUJAYA</a>
                                <a href="blog.html">
-                                   <h5 class="card-title">Pembangunan Tidak Beres</h5>
+                                   <h5 class="card-title">Jalan yang sangat terjal untuk memasuki sekolah</h5>
                                </a>
-                               <p>Smk Maju jaya yang letaknya tidak a=jauh dari daerah pejampangan, yang sangat membutuhkan perhatian dari pendidikan sekolah kurangnya pasilitas KBM</p>
+                               <p>Smk Maju jaya yang letaknya tidak ajauh dari daerah pejampangan, yang sangat membutuhkan perhatian dari pendidikan sekolah kurangnya pasilitas KBM</p>
                                <ul>
                                    <li> <button style="border:none; background:white"><span class="ti-comments" onclick="myReadMore()" id="myBtn"></span></button>2 Comments</li>
                                     <li> <span class="ti-heart"></span>2k Like</li>
@@ -305,12 +314,11 @@
                        </div>
                    </div>
                </div>
-              
+             
            </div>
        </div>
    </section>
     <!--::blog_part end::-->
-
     <!-- learning part start-->
    
 
@@ -320,9 +328,8 @@
             <div class="row justify-content-center">
                 <div class="col-xl-5">
                     <div class="section_tittle text-center">
-                        <p>tesimonials</p>
-                        <h2>Happy Students</h2>
-                    </div>
+                   
+              </div>
                 </div>
             </div>
             <div class="row">
@@ -426,13 +433,12 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
     <!--::blog_part end::-->
 
-   
+
 
     <!-- footer part start-->
     <footer class="footer-area">
@@ -503,11 +509,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!-- footer part end-->
 
     <!-- jquery plugins here-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <!-- jquery -->
     <script src="<?= base_url() ?> js/jquery-1.12.1.min.js"></script>
     <!-- popper js -->
     <script src="<?= base_url() ?> js/popper.min.js"></script>
     <!-- bootstrap js -->
+
     <script src="<?= base_url() ?> js/bootstrap.min.js"></script>
     <!-- easing js -->
     <script src="<?= base_url() ?> js/jquery.magnific-popup.js"></script>
@@ -524,6 +532,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="<?= base_url() ?> js/waypoints.min.js"></script>
     <!-- custom js -->
     <script src="<?= base_url() ?> js/custom.js"></script>
+   
+
+   
 </body>
 
 </html>

@@ -25,10 +25,19 @@ class Home extends CI_Controller
     public function index()
     {
         $data = array(
-            'isi' => 'index'
+            'getcart' => $this->m_tps->cartjs(),
+            'isi' => 'index',
         );
 
         $this->load->view('index', $data, FALSE);
+    }
+
+    public function chart(){
+        $data = array(
+            'getcart' => $this->m_tps->cartjs(),
+            'isi'=>'ubahdata',
+        );
+        $this->load->view('ubahdata', $data, FALSE);
     }
 
     public function loginpage()
@@ -400,28 +409,33 @@ class Home extends CI_Controller
         //dibawah ini saya memasukan gambar 
 
         $this->load->library('upload');
+
         $nmfile = 'home'.time();
         $config['upload_path'] = './template';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
-
-
         $config['file_name'] = $nmfile;
+        
         $this->upload->initialize($config);
         if($_FILES['photo']['name']){
             if($this->upload->do_upload('photo')){
                 $gambar = $this->upload->data();
 //-----------------------------------------------------------------------------------------//
-                $data = array(
-                'id'            =>      '123',
-                'kode_tps'      =>      'TU123',
-                'wilayah'       =>      $this->input->post('wilayah'),
-                'kecamatan'     =>      $this->input->post('kecamatan'),
-                'nama_tps'      =>      $this->input->post('nama_tps'),
-                'lokasi'        =>      $this->input->post('lokasi'),
-                'latitude'      =>      $this->input->post('latitude'),
-                'longitude'     =>      $this->input->post('longitude'),
-                'photo'         =>      $gambar['file_name'],
+            $data = array(
+                'npsn'              =>  htmlspecialchars($this->m_tps->input_data('npsn')),
+                'nama_sekolah'      =>  htmlspecialchars($this->m_tps->input_data('nama_sekolah')),
+                'alamat'            =>  htmlspecialchars($this->m_tps->input_data('alamat')),
+                'desa'              =>  htmlspecialchars($this->m_tps->input_data('desa')),
+                'kecamatan'         =>  htmlspecialchars($this->m_tps->input_data('kecamatan')),
+                'jalan'             =>  htmlspecialchars($this->m_tps->input_data('jalan')),
+                'jumlah_siswa'      =>  htmlspecialchars($this->m_tps->input_data('jumlah_siswa')),
+                'jumlah_guru'       =>  htmlspecialchars($this->m_tps->input_data('jumlah_guru')),
+                'kepala_sekolah'    =>  htmlspecialchars($this->m_tps->input_data('kepala_sekolah')),
+                'akreditasi'        =>  htmlspecialchars($this->m_tps->input_data('akreditasi')),
+                'latitude'          =>  htmlspecialchars($this->m_tps->input_data('latitude')),
+                'longitude'         =>  htmlspecialchars($this->m_tps->input_data('longitude')),
+                'photo' => $gambar['photo'],
             );
+            $this->db->insert('mytable', $data);
 
             if ($this->m_tps->input_data($data) > 0) {
            $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert" style="color:black;">Data tersimpan</div>');
@@ -750,7 +764,7 @@ class Home extends CI_Controller
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('role_id');
         $this->session->set_flashdata('message', '<div class="alert alert-success" style="text-align:center;" role="alert"> Logout Berhasil </div>');
-        redirect('');
+        redirect('user/login');
     }
 
 
@@ -805,7 +819,6 @@ class Home extends CI_Controller
             'role' => $this->input->post('role'),
         );
         if ($this->m_tps->savemenurole($data)>0) {
-
               $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Role Tersimpan</div>');
              redirect('home/role');
         } else {

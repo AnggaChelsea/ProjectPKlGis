@@ -67,7 +67,7 @@
    
     var _layerA = L.geoJson(_points, {
       onEachFeature: function(feature, layer){
-          layer.bindPopup('tempat:'+feature.properties.nama_sekolah+'<br/>lokasi:'+feature.properties.alamat+'<br/>Kecamatan:'+feature.properties.kecamatan+'')      
+          layer.bindPopup('tempat:'+feature.properties.nama_tps+'<br/>lokasi:'+feature.properties.lokasi+'<br/>Kecamatan:'+feature.properties.kecamatan+'')      
     }
     });
    

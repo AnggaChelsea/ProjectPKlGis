@@ -3,7 +3,8 @@
         <div class="row no-gutters">
 <div class="sukses" style="width: 100%;"> <?= $this->session->flashdata('message'); ?> </div>
             <div class="col-md-4">
-                <img src="<?= base_url('template/assets/img/profile/') . $user['image']  ?>" class="card-img" alt="...">
+                <!-- <img src="<?= base_url('template/assets/img/profile/') . $user['image']  ?>" class="card-img" alt="..."> -->
+                <img src="<?= $user['image']  ?>" class="card-img container" style="border-radius: 20px; width:140px; height:100px;  " alt="...">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
@@ -29,7 +30,7 @@
     <div class="modal-content">
       <div class="modal-header">
                
-                    <?= form_open_multipart('home/input_data'); ?>
+                <?php echo form_open_multipart('home/input_data');?>
                     <div class="form-group">
                         <label for="nama_sekolah">NPSN</label>
                         <input style="width: 100%;" minlength="8" maxlength="8" type="text" value="" name="nama_sekolah" class="form-control"
@@ -62,7 +63,7 @@
                             placeholder="Bappeda" id="alamat">
                     </div>
                     <div class="form-group">
-                        <label for="desa">Wilayah</label>
+                        <label for="desa">Desa</label>
                         <input type="text" value="" name="desa" class="form-control" required=""
                             placeholder="Pelabuhanratu" id="desa">
                     </div>
@@ -92,16 +93,14 @@
                                 placeholder="Pelabuhanratu" id="kepala_sekolah">
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="kecamatan">Kreditasi</label>
-                            <select name="akreditasi" id="">
-                            <option value="A">A</option>
-                            <option value="B">B</option>
-                            <option value="C">C</option>
-                            </select>
-                        </div>
-                    </div>
+                    <select class="form-control">
+                    <option>Select Akreditasi</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="belum ter akreditasi">belum ter akreditasi</option>
+                    </select>
                     <div class="form-group">
                         <div class="form-group col-md-6">
                             <input class="form-check-input" type="file" name="photo" id="gridCheck">
@@ -118,7 +117,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Kirim</button>
                 <!-- </form> -->
-                 <?= form_close(); ?>
+                <?php echo "</form>"?>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
