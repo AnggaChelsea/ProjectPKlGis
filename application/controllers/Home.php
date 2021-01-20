@@ -18,10 +18,10 @@ class Home extends CI_Controller
         $this->load->library('form_validation');
         // cek_sesi();
         $this->user = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-       
     }
 
-  
+    
+
     public function index()
     {
         $data = array(
@@ -32,10 +32,11 @@ class Home extends CI_Controller
         $this->load->view('index', $data, FALSE);
     }
 
-    public function chart(){
+    public function chart()
+    {
         $data = array(
             'getcart' => $this->m_tps->cartjs(),
-            'isi'=>'ubahdata',
+            'isi' => 'ubahdata',
         );
         $this->load->view('ubahdata', $data, FALSE);
     }
@@ -68,12 +69,11 @@ class Home extends CI_Controller
             'user' => $this->user
         );
         $this->load->view('template/v_wrapper', $data, FALSE);
-        
     }
 
 
 
-   
+
 
     public function polyline()
     {
@@ -93,8 +93,6 @@ class Home extends CI_Controller
             'user' => $this->user
         );
         $this->load->view('template/v_wrapper', $data, FALSE);
-        
-
     }
 
     // public function menuUtama()
@@ -156,8 +154,6 @@ class Home extends CI_Controller
             'user' => $this->user
         );
         $this->load->view('template/v_wrapper', $data, FALSE);
-
-
     }
 
 
@@ -176,13 +172,13 @@ class Home extends CI_Controller
     public function useronly()
     {
         $data = array(
-            'tps'=>$this->m_tps->get_all_data(),
-            'isi'=>'tps/v_pemetaan_tps',
+            'tps' => $this->m_tps->get_all_data(),
+            'isi' => 'tps/v_pemetaan_tps',
         );
         $this->load->view('tps/v_pemetaan_tps', $data, FALSE);
     }
 
-    
+
 
     public function perminatan()
     {
@@ -206,16 +202,16 @@ class Home extends CI_Controller
         $this->load->view('template/v_wrapper', $data, FALSE);
     }
 
-     //get semua user sekolah
-     public function getAllUserSekolah()
-     {
+    //get semua user sekolah
+    public function getAllUserSekolah()
+    {
         $data = array(
             'anjay' => $this->m_tps->get_data_user_sekolah(),
             'isi' => 'users/dashboard',
             'user' => $this->user
         );
         $this->load->view('template/v_wrapper', $data, FALSE);
-     }
+    }
 
     public function routing()
     {
@@ -235,7 +231,7 @@ class Home extends CI_Controller
             'title' => 'Pemetaan Kegiatan Menu Cluster',
             'tps' => $this->m_tps->get_all_data(),
             'isi' => 'v_cluster',
-            'user' => $this->user 
+            'user' => $this->user
 
 
         );
@@ -276,9 +272,8 @@ class Home extends CI_Controller
         $this->load->view('template/v_wrapper', $data, FALSE);
 
         //disini saya menambahkan menu pencarian
-       if($this->input->post('submit')){
-          $data['keyword']=$this->input->post('keyword');
-
+        if ($this->input->post('submit')) {
+            $data['keyword'] = $this->input->post('keyword');
         }
     }
 
@@ -288,28 +283,26 @@ class Home extends CI_Controller
     {
 
         $data = array(
-             $this->m_tps->edit('tbl_tps'),
+            $this->m_tps->edit('tbl_tps'),
             'user' => $this->user
         );
-         if ($this->m_tps->edit($data) > 0) {
-           $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert" style="color:black;">Data tersimpan</div>');
+        if ($this->m_tps->edit($data) > 0) {
+            $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert" style="color:black;">Data tersimpan</div>');
             redirect('home/detail');
-            } else {
+        } else {
             $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert" style="color:black;">ada kesalahan </div>');
             redirect('home/detail');
         }
-
     }
 
     public function detailpermintaan($id)
     {
 
-        $data = array
-        (
-            'title'=>'Kotak permintaan',
-            'tps'=>$this->m_tps->detailpesan($id),
-            'isi'=>'users/detailpermintaan',
-            'user'=> $this->user
+        $data = array(
+            'title' => 'Kotak permintaan',
+            'tps' => $this->m_tps->detailpesan($id),
+            'isi' => 'users/detailpermintaan',
+            'user' => $this->user
         );
         $this->load->view('template/v_wrapper', $data, FALSE);
     }
@@ -344,7 +337,7 @@ class Home extends CI_Controller
     //         redirect('home/detail');
     //     }
 
-    
+
     // }
 
     //editdatamap // update
@@ -407,104 +400,141 @@ class Home extends CI_Controller
     {
 
         //dibawah ini saya memasukan gambar 
-
         $this->load->library('upload');
-
-        $nmfile = 'home'.time();
+        $nmfile = 'home' . time();
         $config['upload_path'] = './template';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
+
+
         $config['file_name'] = $nmfile;
-        
         $this->upload->initialize($config);
-        if($_FILES['photo']['name']){
-            if($this->upload->do_upload('photo')){
+        if ($_FILES['photo']['name']) {
+            if ($this->upload->do_upload('photo')) {
                 $gambar = $this->upload->data();
-//-----------------------------------------------------------------------------------------//
-            $data = array(
-                'npsn'              =>  htmlspecialchars($this->m_tps->input_data('npsn')),
-                'nama_sekolah'      =>  htmlspecialchars($this->m_tps->input_data('nama_sekolah')),
-                'alamat'            =>  htmlspecialchars($this->m_tps->input_data('alamat')),
-                'desa'              =>  htmlspecialchars($this->m_tps->input_data('desa')),
-                'kecamatan'         =>  htmlspecialchars($this->m_tps->input_data('kecamatan')),
-                'jalan'             =>  htmlspecialchars($this->m_tps->input_data('jalan')),
-                'jumlah_siswa'      =>  htmlspecialchars($this->m_tps->input_data('jumlah_siswa')),
-                'jumlah_guru'       =>  htmlspecialchars($this->m_tps->input_data('jumlah_guru')),
-                'kepala_sekolah'    =>  htmlspecialchars($this->m_tps->input_data('kepala_sekolah')),
-                'akreditasi'        =>  htmlspecialchars($this->m_tps->input_data('akreditasi')),
-                'latitude'          =>  htmlspecialchars($this->m_tps->input_data('latitude')),
-                'longitude'         =>  htmlspecialchars($this->m_tps->input_data('longitude')),
-                'photo' => $gambar['photo'],
-            );
-            $this->db->insert('mytable', $data);
+                //-----------------------------------------------------------------------------------------//
+                $data = array(
+                    'npsn'              =>  $this->input->post('npsn'),
+                    'nama_sekolah'      =>  $this->input->post('nama_sekolah'),
+                    'alamat'            =>  $this->input->post('alamat'),
+                    'desa'              =>  $this->input->post('desa'),
+                    'kecamatan'         =>  $this->input->post('kecamatan'),
+                    'jalan'             =>  $this->input->post('jalan'),
+                    'jumlah_siswa'      =>  $this->input->post('jumlah_siswa'),
+                    'jumlah_guru'       =>  $this->input->post('jumlah_guru'),
+                    'kepala_sekolah'    =>  $this->input->post('kepala_sekolah'),
+                    'akreditasi'        =>  $this->input->post('akreditasi'),
+                    'latitude'          =>  $this->input->post('latitude'),
+                    'longitude'         =>  $this->input->post('longitude'),
+                    'photo'             =>  $gambar['file_name'],
+                );
 
-            if ($this->m_tps->input_data($data) > 0) {
-           $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert" style="color:black;">Data tersimpan</div>');
-            redirect('home/profile');
-            } else {
-            $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert" style="color:black;">ada kesalahan </div>');
-            redirect('');
-        }
-    }
-
+                if ($this->m_tps->input_data($data) > 0) {
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert" style="color:black;">Data sudah terkirim tunggu kabar selanjutnya</div>');
+                    redirect(base_url(), 'refresh', 'home/profile');
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert" style="color:black;">ada kesalahan </div>');
+                    redirect('home/profile');
+                }
             }
         }
 
+        // $this->load->library('upload');
+        // $this->load->model('m_tps');
 
-        //request / kirim data ke admin atau minta reques ke admin
+        // $nmfile = 'home' . time();
+        // $config['upload_path'] = './template';
+        // $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        // $config['file_name'] = $nmfile;
 
-        public function kirim_data()
+        // $this->upload->initialize($config);
+        // if ($_FILES['photo']['name']) {
+        //     if ($this->upload->do_upload('photo')) {
+        //         $gambar = $this->upload->data();
+        //         //-----------------------------------------------------------------------------------------//
+        //         $data = array(
+        //             'npsn'              =>  $this->input->post('npsn'),
+        //             'nama_sekolah'      =>  $this->input->post('nama_sekolah'),
+        //             'alamat'            =>  $this->input->post('alamat'),
+        //             'desa'              =>  $this->input->post('desa'),
+        //             'kecamatan'         =>  $this->input->post('kecamatan'),
+        //             'jalan'             =>  $this->input->post('jalan'),
+        //             'jumlah_siswa'      =>  $this->input->post('jumlah_siswa'),
+        //             'jumlah_guru'       =>  $this->input->post('jumlah_guru'),
+        //             'kepala_sekolah'    =>  $this->input->post('kepala_sekolah'),
+        //             'akreditasi'        =>  $this->input->post('akreditasi'),
+        //             'latitude'          =>  $this->input->post('latitude'),
+        //             'longitude'         =>  $this->input->post('longitude'),
+        //             'photo' => $gambar['photo'],
+        //         );
+
+        //         $data = $this->m_tps->insert('mytable',$data);
+
+        //         if ($this->m_tps->input_data($data) > 0) {
+        //             $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert" style="color:black;">Data tersimpan</div>');
+        //             redirect(base_url(),'home/profile');
+        //         } else {
+        //             $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert" style="color:black;">ada kesalahan </div>');
+        //             redirect('');
+        //         }
+        //     }
+        // }
+    }
+
+
+    //request / kirim data ke admin atau minta reques ke admin
+
+    public function kirim_data()
     {
 
         //dibawah ini saya memasukan gambar 
 
         $this->load->library('upload');
-        $nmfile = 'home'.time();
+        $nmfile = 'home' . time();
         $config['upload_path'] = './template';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
 
 
         $config['file_name'] = $nmfile;
         $this->upload->initialize($config);
-        if($_FILES['photo']['name']){
-            if($this->upload->do_upload('photo')){
+        if ($_FILES['photo']['name']) {
+            if ($this->upload->do_upload('photo')) {
                 $gambar = $this->upload->data();
-//-----------------------------------------------------------------------------------------//
+                //-----------------------------------------------------------------------------------------//
                 $data = array(
-                'wilayah'       =>      $this->input->post('wilayah'),
-                'kecamatan'     =>      $this->input->post('kecamatan'),
-                'nama_dinas'      =>      $this->input->post('nama_dinas'),
-                'keterangan'        =>      $this->input->post('keterangan'),
-                'latitude'      =>      $this->input->post('latitude'),
-                'longitude'     =>      $this->input->post('longitude'),
-                'photo'         =>      $gambar['file_name'],
-            );
+                    'wilayah'       =>      $this->input->post('wilayah'),
+                    'kecamatan'     =>      $this->input->post('kecamatan'),
+                    'nama_dinas'      =>      $this->input->post('nama_dinas'),
+                    'keterangan'        =>      $this->input->post('keterangan'),
+                    'latitude'      =>      $this->input->post('latitude'),
+                    'longitude'     =>      $this->input->post('longitude'),
+                    'photo'         =>      $gambar['file_name'],
+                );
 
-            if ($this->m_tps->requestdata($data) > 0) {
-           $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert" style="color:black;">Data sudah terkirim tunggu kabar selanjutnya</div>');
-            redirect('home/profile');
-            } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert" style="color:black;">ada kesalahan </div>');
-            redirect('home/profile');
+                if ($this->m_tps->requestdata($data) > 0) {
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert" style="color:black;">Data sudah terkirim tunggu kabar selanjutnya</div>');
+                    redirect('home/profile');
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert" style="color:black;">ada kesalahan </div>');
+                    redirect('home/profile');
+                }
+            }
         }
     }
 
-            }
-        }
+    //pesan perminatan
+    // public function perminatan()
+    // {
 
-        //pesan perminatan
-        // public function perminatan()
-        // {
-            
-        //     $data = array
-        //     (
-        //         'title'=>'Pesan Perminatan',
-        //         'tps'=> $this->m_tps->perminatandata(),
-        //         'isi'=>'home/v_perminatan',
-        //         'user' => $this->user
-        // );
-        // $this->load->view('template/v_wrapper', $data, FALSE);
+    //     $data = array
+    //     (
+    //         'title'=>'Pesan Perminatan',
+    //         'tps'=> $this->m_tps->perminatandata(),
+    //         'isi'=>'home/v_perminatan',
+    //         'user' => $this->user
+    // );
+    // $this->load->view('template/v_wrapper', $data, FALSE);
 
-        // }
+    // }
 
 
 
@@ -568,26 +598,26 @@ class Home extends CI_Controller
 
     //hapus menu akses
 
-     public function hapusakses($id)
+    public function hapusakses($id)
     {
         $where = array('id' => $id);
         if ($this->m_tps->hapusmenuakses('user_menu', $where) > 0) {
             $this->session->set_flashdata('pesan', '<div class="alert alert-warning" role="alert" style="text-align:center; color:black;"> Data Terhapus </div>');
             redirect('home/menuakses');
         } else {
-           $this->session->set_flashdata('pesan', '<div class="alert alert-warning" role="alert" style="text-align:center; color:black;"> Data Terhapus </div>');
+            $this->session->set_flashdata('pesan', '<div class="alert alert-warning" role="alert" style="text-align:center; color:black;"> Data Terhapus </div>');
             redirect('home/menuakses');
         }
     }
 
-     public function hapusaksesmenu($id)
+    public function hapusaksesmenu($id)
     {
         $where = array('id' => $id);
         if ($this->m_tps->hapusmenuaksesnav('user_sub_menu', $where) > 0) {
             $this->session->set_flashdata('pesan', '<div class="alert alert-warning" role="alert" style="text-align:center; color:black;"> Data Terhapus </div>');
             redirect('home/submenumanagement');
         } else {
-           $this->session->set_flashdata('pesan', '<div class="alert alert-warning" role="alert" style="text-align:center; color:black;"> Data Terhapus </div>');
+            $this->session->set_flashdata('pesan', '<div class="alert alert-warning" role="alert" style="text-align:center; color:black;"> Data Terhapus </div>');
             redirect('home/submenumanagement');
         }
     }
@@ -596,10 +626,10 @@ class Home extends CI_Controller
     public function detail($id)
     {
         $data = array(
-            'title'=>'detail',
-            'tps'=>$this->m_tps->detailnya($id),
-            'isi'=>'users/detail',
-            'user'=> $this->user
+            'title' => 'detail',
+            'tps' => $this->m_tps->detailnya($id),
+            'isi' => 'users/detail',
+            'user' => $this->user
         );
         $this->load->view('template/v_wrapper', $data, FALSE);
     }
@@ -622,12 +652,12 @@ class Home extends CI_Controller
     public function login()
     {
 
-        
-        
+
+
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
-      
+
 
         if ($this->form_validation->run() == false) {
 
@@ -673,8 +703,6 @@ class Home extends CI_Controller
                         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert" style="color:black;">Selamat Datang dan silahkan lihat Peta Dinas</div>');
                         redirect('home/profile');
                     }
-                   
-
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" style="text-align:center;" role="alert">Password kurang tepat</div>');
                     redirect('home/login');
@@ -741,7 +769,7 @@ class Home extends CI_Controller
                     'nama' => htmlspecialchars($this->input->post('nama', true)),
                     'email' => htmlspecialchars($this->input->post('email', true)),
                     'sekolah' => htmlspecialchars($this->input->post('sekolah', true)),
-                    'phone' => htmlspecialchars($this->input->post('phone',true)),
+                    'phone' => htmlspecialchars($this->input->post('phone', true)),
                     'image' => 'default.jpg',
                     'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                     'role_id' => 2,
@@ -764,22 +792,25 @@ class Home extends CI_Controller
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('role_id');
         $this->session->set_flashdata('message', '<div class="alert alert-success" style="text-align:center;" role="alert"> Logout Berhasil </div>');
-        redirect('user/login');
+        redirect('');
     }
 
+    //add map to new map input_data
 
-   //ini get fuzy
 
-   public function fuzy()
-   {
-       $data = array(
-           'title'=>'lengkapi data',
-           'fuzyget'=>$this->m_tps->getfuzy(),
-           'isi'=> 'fuzy/index',
-           'user'=>$this->user
-       );
-       $this->load->view('template/v_wrapper', $data, FALSE);
-   }
+
+    //ini get fuzy
+
+    public function fuzy()
+    {
+        $data = array(
+            'title'     => 'lengkapi data',
+            'fuzyget'   => $this->m_tps->getfuzy(),
+            'isi'       => 'fuzy/index',
+            'user'      => $this->user
+        );
+        $this->load->view('template/v_wrapper', $data, FALSE);
+    }
 
 
     //?ini khusus admin
@@ -801,29 +832,28 @@ class Home extends CI_Controller
     {
         $data = array(
             'title' => 'Admin Role',
-            'tps'=>$this->m_tps->aksesrole(),
+            'tps' => $this->m_tps->aksesrole(),
             'isi' => 'users/role',
             'user' => $this->user
         );
         $this->load->view('template/v_wrapper', $data, FALSE);
     }
 
-//...............................................................................///
+    //...............................................................................///
 
     //input / tambah role akses
 
     public function tambahaksesrole()
     {
-        $data = array
-        (
+        $data = array(
             'role' => $this->input->post('role'),
         );
-        if ($this->m_tps->savemenurole($data)>0) {
-              $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Role Tersimpan</div>');
-             redirect('home/role');
+        if ($this->m_tps->savemenurole($data) > 0) {
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Role Tersimpan</div>');
+            redirect('home/role');
         } else {
-             $this->session->set_flashdata('message', '<div class="alert alert-succes" role="alert">Data Teri Simpan</div>');
-             redirect('home/role');
+            $this->session->set_flashdata('message', '<div class="alert alert-succes" role="alert">Data Teri Simpan</div>');
+            redirect('home/role');
         }
     }
 
@@ -832,17 +862,16 @@ class Home extends CI_Controller
 
     public function role_acces()
     {
-        $data = array
-        (
+        $data = array(
             'title' => 'Role Access',
-            'tps'=>$this->m_tps->menuaksesrole(),
+            'tps' => $this->m_tps->menuaksesrole(),
             'isi' => 'users/role_acces',
             'user' => $this->user
         );
-         $this->load->view('template/v_wrapper', $data,  FALSE);
+        $this->load->view('template/v_wrapper', $data,  FALSE);
     }
- 
- //.................................................................................//
+
+    //.................................................................................//
 
 
 
@@ -859,25 +888,22 @@ class Home extends CI_Controller
             'user' => $this->user
         );
         $this->load->view('template/v_wrapper', $data, FALSE);
-
-
     }
 
     //dibawah ini saya akan menambakan data untuk hak akses
 
     public function tambahakses()
     {
-        $data = array
-        (
+        $data = array(
             'menu' => $this->input->post('menu'),
         );
-        if ($this->m_tps->savemenuakses($data)>0) {
+        if ($this->m_tps->savemenuakses($data) > 0) {
 
-              $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data tidak Teri Simpan</div>');
-             redirect('home/menuakses');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data tidak Teri Simpan</div>');
+            redirect('home/menuakses');
         } else {
-             $this->session->set_flashdata('message', '<div class="alert alert-succes" role="alert">Data Teri Simpan</div>');
-             redirect('home/menuakses');
+            $this->session->set_flashdata('message', '<div class="alert alert-succes" role="alert">Data Teri Simpan</div>');
+            redirect('home/menuakses');
         }
     }
 
@@ -885,7 +911,7 @@ class Home extends CI_Controller
 
 
     //MEMBUAT TAMBAH SUB MENU
-     public function submenumanagement()
+    public function submenumanagement()
     {
         $data = array(
 
@@ -900,23 +926,22 @@ class Home extends CI_Controller
     //INPUT TAMBAH SUB MENU
     public function tambahsubmenu()
     {
-        $data = array
-        (
+        $data = array(
 
             'menu_id' => $this->input->post('menu_id'),
             'title' => $this->input->post('title'),
             'url' => $this->input->post('url'),
             'icon' => $this->input->post('icon'),
-            'is_active'=> $this->input->post('is_active')
+            'is_active' => $this->input->post('is_active')
 
         );
-        if ($this->m_tps->savesubmenu($data)>0) {
+        if ($this->m_tps->savesubmenu($data) > 0) {
 
-              $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">Data Teri Simpan</div>');
-             redirect('home/submenumanagement');
+            $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">Data Teri Simpan</div>');
+            redirect('home/submenumanagement');
         } else {
-             $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Data Teri Simpan</div>');
-             redirect('home/submenumanagement');
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Data Teri Simpan</div>');
+            redirect('home/submenumanagement');
         }
     }
 
@@ -944,36 +969,36 @@ class Home extends CI_Controller
     }
 
 
-        public function search(){
-      
+    public function search()
+    {
+
         $keyword = $this->input->post('keyword');
         $siswa = $this->SiswaModel->search($keyword);
- 
-        $hasil = $this->load->view('view', array('siswa'=>$siswa), true);
-        
+
+        $hasil = $this->load->view('view', array('siswa' => $siswa), true);
+
         // Buat sebuah array
         $callback = array(
-          'hasil' => $hasil, // Set array hasil dengan isi dari view.php yang diload tadi
+            'hasil' => $hasil, // Set array hasil dengan isi dari view.php yang diload tadi
         );
         echo json_encode($callback); // konversi varibael $callback menjadi JSON
-      }
+    }
 
 
     //function upload gambar
-    public function tambah(){    
-        $data = array();        
-        if($this->input->post('submit')){
-              $upload = $this->GambarModel->upload();            
-              if($upload['result'] == "success"){ 
-                        $this->GambarModel->save($upload);                
-                        redirect('home/editdata');
+    public function tambah()
+    {
+        $data = array();
+        if ($this->input->post('submit')) {
+            $upload = $this->GambarModel->upload();
+            if ($upload['result'] == "success") {
+                $this->GambarModel->save($upload);
+                redirect('home/editdata');
+            } else {
+                $data['message'] = $upload['error'];
+            }
+        }
 
-             }else{
-                 $data['message'] = $upload['error'];
-        }               
+        $this->load->view('gambar/form', $data);
     }
-
-                   $this->load->view('gambar/form', $data);  
-}
-
 }

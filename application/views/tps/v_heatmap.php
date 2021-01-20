@@ -1,4 +1,4 @@
-<div class="main-content" style="margin-top:-440px;">
+<div class="main-content" style="margin-top:-70px;" >
   
 
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />

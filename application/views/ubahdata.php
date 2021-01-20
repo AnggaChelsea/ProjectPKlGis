@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html>
 
@@ -7,17 +6,19 @@
 	<script src="<?= base_url() ?>template3/js/Chart.min.js"></script>
 	<script src="<?= base_url() ?>template3/js/utils.js"></script>
 	<style>
-		canvas{
+		canvas {
 			-moz-user-select: none;
 			-webkit-user-select: none;
 			-ms-user-select: none;
 		}
+
 		.chart-container {
 			width: 500px;
 			margin-left: 40px;
 			margin-right: 40px;
 			margin-bottom: 40px;
 		}
+
 		.container {
 			display: flex;
 			flex-direction: row;
@@ -34,19 +35,19 @@
 			return {
 				type: 'line',
 				data: {
-					labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+					labels: ['January', 'February', 'Maret', 'April', 'Mai', 'Juni', 'July', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
 					datasets: [{
-						label: 'Sekolah terdaftar yang rerpelosok',
+						label: 'Sekolah terdaftar yang mudah akses',
 						backgroundColor: window.chartColors.red,
 						borderColor: window.chartColors.red,
-						data: [10, 30, 39, 20, 25, 34, 0],
+						data: [20, 40, 59, 20, 25, 34, 20, 100, 20, 15, 14, 22],
 						fill: false,
 					}, {
-						label: 'My Second dataset',
+						label: 'Sekolah terdaftar yang terpelosok',
 						fill: false,
 						backgroundColor: window.chartColors.blue,
 						borderColor: window.chartColors.blue,
-						data: [18, 33, 22, 19, 11, 39, 30],
+						data: [1, 3, 2, 9, 1, 9, 0, 0, 0, 5, 4, 22],
 					}]
 				},
 				options: {
@@ -75,31 +76,24 @@
 		window.onload = function() {
 			var container = document.querySelector('.container');
 
-			[ {
-				title: 'In year 2019',
+			[{
+				title: 'Di Tahun 2019',
 				gridLines: {
+					drawBorder: true,
 					display: true
 				}
 			}, {
-				title: 'Display: false, no border',
+				title: 'Di Tahun 2020',
 				gridLines: {
-					display: false,
+					display: true,
 					drawBorder: true
 				}
 			}, {
-				title: 'DrawOnChartArea: false',
-				gridLines: {
-					display: true,
-					drawBorder: true,
-					drawOnChartArea: false,
-				}
-			}, {
-				title: 'DrawTicks: false',
+				title: 'Di Tahun 2021',
 				gridLines: {
 					display: true,
 					drawBorder: true,
 					drawOnChartArea: true,
-					drawTicks: false,
 				}
 			}].forEach(function(details) {
 				var div = document.createElement('div');
@@ -115,6 +109,8 @@
 			});
 		};
 	</script>
+
+	<button class="btn btn-outline-primary ">Back Home</button>
 </body>
 
 </html>
