@@ -17,7 +17,7 @@
   </style>
 </head>
 <body>
-<div class="main-content" style="margin-top:-440px;">
+<div class="main-content" style="margin-top:-70px;">
 <br/><p></p>
   <div id='map'></div>
    <script>

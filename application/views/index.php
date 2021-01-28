@@ -48,7 +48,7 @@
                         <a class="navbar-brand" href="<?= base_url('home/index') ?>">
                             <h4 class="text-warning">MAP SCHOOL</h4> <!-- <img src="<?= base_url() ?>template3/img/logo.png" alt="logo"> -->
                         </a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler btn btn-primary" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
 
@@ -59,8 +59,8 @@
                                         Tentang
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="<?= base_url('peta/petauser'); ?>">Peta Sekolah</a>
-                                        <a class="dropdown-item" href="<?= base_url('home/chart') ?>">Chart Data sekolah</a>
+                                        <a class="dropdown-item" href="<?= base_url('home/useronly'); ?>">Peta Sekolah</a>
+                                        <a class="dropdown-item" href="<?= base_url('home/getcartnewschool') ?>">Chart Data sekolahbu</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown" id="step-one">
@@ -77,7 +77,7 @@
                                     <a class="nav-link" href="contact.html">Contact</a>
                                 </li>
                                 <li class="d-none d-lg-block" id="step-two">
-                                    <a class="btn_1 text-dark bg-primary" href="<?= base_url('home/register') ?>">Login</a>
+                                    <a class="btn_1 text-dark bg-primary" href="<?= base_url('home/loginpage') ?>">Login</a>
                                 </li>
                             </ul>
                         </div>
@@ -278,11 +278,6 @@
     </section>
 
 
-    <!-- learning part end-->
-
-    <!--::review_part start::-->
-
-
     <!--::blog_part start::-->
     <section class="blog_part section_padding">
         <div class="container">
@@ -306,16 +301,7 @@
                                 <h5 class="card-title">Jalan yang sangat terjal untuk memasuki sekolah</h5>
                             </a>
                             <p>Smk Maju jaya yang letaknya tidak ajauh dari daerah pejampangan, yang sangat membutuhkan perhatian dari pendidikan sekolah kurangnya pasilitas KBM</p>
-                            <ul>
-                                <li> <button style="border:none; background:white"><span class="ti-comments" onclick="myReadMore()" id="myBtn"></span></button>2 Comments</li>
-                                <li> <span class="ti-heart"></span>2k Like</li>
-                                <div id="mycomments" style="display:none">
-                                    <li id="isiComment">Saya berniat mengunjungi kesana</li><br>
-                                    <input type="text" id="inputcomment" placeholder="comments..">
-                                </div>
-                        </div>
-
-                        </ul>
+                            
                     </div>
                 </div>
             </div>

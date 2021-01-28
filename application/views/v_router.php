@@ -13,10 +13,10 @@
             id: 'mapbox/streets-v11',
         }).addTo(map);
 
-        <?php foreach ($data as $key) { ?>
+        <?php foreach ($tps as $key) { ?>
             L.marker([<?= $key['latitude'] ?>, <?= $key['longitude'] ?>]).addTo(map)
                 .bindPopup(`<h5><?= $key['nama_sekolah'] ?></h5> </p> <br>lokasi <?= $key['alamat'] ?></br> kecamatan <?= $key['kecamatan'] ?>
-                </br> Kode Coordinate lat & Lng <br><?= $key['latitude'] ?>,&nbsp;<?= $key['longitude'] ?> <br><span class="text-danger"> jalan <?= $key['jalan'] ?> </span>
+                </br> Kode Coordinate lat & Lng <br><?= $key['latitude'] ?>,&nbsp;<?= $key['longitude'] ?>
                 <br><button class="btn btn-outline-success" onclick="return kesini(<?= $key['latitude'] ?>, <?= $key['longitude'] ?>)">Route kesini</button>`)
                 .openPopup();
 

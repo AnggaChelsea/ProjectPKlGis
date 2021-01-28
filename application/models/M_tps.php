@@ -12,6 +12,7 @@ class M_tps extends CI_Model
         $this->db->select('*');
         $this->db->from('mytable');
         return $this->db->get()->result_array();
+        
     }
 
     public function getfuzy()
@@ -20,6 +21,8 @@ class M_tps extends CI_Model
         $this->db->form('fuzy');
         return $this->db->get()->result_array();
     }
+
+
 
     //ini untuk data user sekolah
     public function get_data_user_sekolah()

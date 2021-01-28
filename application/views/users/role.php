@@ -1,4 +1,4 @@
-<div class="main-content" style="margin-top:-500px;">
+<div class="main-content" style="margin-top:-70px;">
 <table class="table table-hover">
   <div class="sukses" style="width: 100%;"> <?= $this->session->flashdata('message'); ?> </div>
   <a href="<?= base_url('home/tambahroleakses') ?>" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newRoleModal">Tambah Role Acces</a>
@@ -27,9 +27,6 @@
   </tbody>
 </table>
 </div>
-
-<!-- Button trigger modal -->
-
 
 <!-- Modal -->
 <div class="modal fade" id="newRoleModal" tabindex="-1" role="dialog" aria-labelledby="newRoleModal" aria-hidden="true">

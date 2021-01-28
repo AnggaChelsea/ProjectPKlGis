@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>RegistrationForm_v9 by Colorlib</title>
+    <title>Registration</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- LINEARICONS -->
@@ -27,7 +27,7 @@
         <div class="inner">
 
             <form action="<?= base_url('home/registration'); ?>" enctype="multipart/form-data" method="POST">
-                <h3>Pemetaan Kegiatan</h3>
+                <h3>Pemetaan Sekolah</h3>
 
                 <div class="form-row">
                     <div class="form-wrapper">
@@ -37,9 +37,9 @@
                         <span style="color: red;"><?= form_error('nama', '<span class="text-danger pl-3">', '<span>'); ?></span>
                     </div>
                     <div class="form-wrapper">
-                        <label for="">Asal Sekolah *</label>
+                        <label for="">Jabatan Saat Ini*</label>
                         <span class="lnr "></span>
-                        <input type="text" class="form-control " name="sekolah" value="<?= set_value('sekolah'); ?>" placeholder="Smk .....">
+                        <input type="text" class="form-control " name="sekolah" value="<?= set_value('sekolah'); ?>" placeholder="Ex.Guru.....">
                     </div>
                 </div>
 
@@ -48,7 +48,7 @@
                     <div class="form-wrapper">
                         <label for="">Email *</label>
                         <span class="lnr "></span>
-                        <input type="text" class="form-control " name="email" value="<?= set_value('email'); ?>" placeholder="example@gmail.com">
+                        <input type="email" class="form-control " name="email" value="<?= set_value('email'); ?>" placeholder="example@gmail.com">
                     </div>
                     <span style="color: red;"><?= form_error('email', '<span class="text-danger pl-3">', '<span>'); ?></span>
                     <div class="form-wrapper">

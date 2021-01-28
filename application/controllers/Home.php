@@ -32,13 +32,16 @@ class Home extends CI_Controller
         $this->load->view('index', $data, FALSE);
     }
 
-    public function chart()
+    
+
+    public function getcartnewschool()
     {
+       
         $data = array(
-            'getcart' => $this->m_tps->cartjs(),
-            'isi' => 'ubahdata',
+            'graph' => $this->m_tps->get_all_data(),
+            'isi' => 'peta/chart'
         );
-        $this->load->view('ubahdata', $data, FALSE);
+        $this->load->view('peta/chart', $data);
     }
 
     public function loginpage()
@@ -46,7 +49,7 @@ class Home extends CI_Controller
         $data = array(
             'isi' => 'users/login'
         );
-        $this->load->view('user/login', $data, FALSE);
+        $this->load->view('users/login', $data, FALSE);
     }
 
     //mana tampilannya
@@ -54,9 +57,9 @@ class Home extends CI_Controller
     public function register1()
     {
         $data = array(
-            'isi' => 'users/register1'
+            'isi' => 'form/daftarmapping'
         );
-        $this->load->view('users/register1', $data, FALSE);
+        $this->load->view('form/daftarmapping', $data, FALSE);
     }
 
     //!
@@ -160,7 +163,7 @@ class Home extends CI_Controller
     public function tps()
     {
         $data = array(
-            'title' => 'Pemetaan Kegiatan Pemetaan Dinas Sukabumi',
+            'title' => 'Pemetaan Kegiatan Pemetaan Sekolah Sukabumi',
             'tps' => $this->m_tps->get_all_data(),
             'isi' => 'tps/v_pemetaan_tps',
             'user' => $this->user
@@ -168,13 +171,15 @@ class Home extends CI_Controller
         $this->load->view('template/v_wrapper', $data, FALSE);
     }
 
-    //mapping user only
+
+    //mapping user us
     public function useronly()
     {
         $data = array(
             'tps' => $this->m_tps->get_all_data(),
-            'isi' => 'tps/v_pemetaan_tps',
+            'isi' => 'peta/petauser',
         );
+        $this->load->view('template/v_head', $data, FALSE);
         $this->load->view('tps/v_pemetaan_tps', $data, FALSE);
     }
 
@@ -218,7 +223,7 @@ class Home extends CI_Controller
         $data = array(
             'title' => 'Pemetaan Kegiatan Routing Machine',
             'tps' => $this->m_tps->get_all_data(),
-            'isi' => 'tps/v_routing',
+            'isi' => 'v_router',
             'user' => $this->user
         );
         $this->load->view('template/v_wrapper', $data, FALSE);
@@ -705,7 +710,7 @@ class Home extends CI_Controller
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" style="text-align:center;" role="alert">Password kurang tepat</div>');
-                    redirect('home/login');
+                    redirect('home/loginpage');
                 }
             } else {
                 //password blum aktipasi
@@ -721,6 +726,7 @@ class Home extends CI_Controller
     public function registration()
     {
 
+      
 
         $this->form_validation->set_rules(
             'nama',
@@ -732,7 +738,7 @@ class Home extends CI_Controller
         //     'Dinas',
         //     'required|trim|'
         // );
-        // $this->form_validation->set_rules(
+        // $this->form_validati?on->set_rules(
         //     'email',
         //     'Email',
         //     'required|trim|
@@ -759,17 +765,17 @@ class Home extends CI_Controller
         if ($this->form_validation->run() == false) {
 
             $data = array(
-                'title' => 'Register Pemetaan Dinas',
-                'isi' => 'users/register1'
+                'title' => 'Register Pemetaan Sekolah',
+                'isi' => 'form/daftarmapping'
             );
-            $this->load->view('users/register1', $data, FALSE);
+            $this->load->view('form/daftarmapping', $data, FALSE);
         } else {
             $data =
                 [
                     'nama' => htmlspecialchars($this->input->post('nama', true)),
                     'email' => htmlspecialchars($this->input->post('email', true)),
-                    'sekolah' => htmlspecialchars($this->input->post('sekolah', true)),
-                    'phone' => htmlspecialchars($this->input->post('phone', true)),
+                    'jabatan' => htmlspecialchars($this->input->post('jabatan', true)),
+                    'latitude'=> htmlspecialchars($this->input->post('latitude')),
                     'image' => 'default.jpg',
                     'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                     'role_id' => 2,
@@ -777,11 +783,11 @@ class Home extends CI_Controller
                     'date_created' => time()
                 ];
             //dibawah ini 
-            $this->db->insert('users', $data);
+            $this->db->insert('users', $data, );
             //dibawah ini saya membuat session jikalau register sudah masuk maka akan timbul alert sprti ini 
             //ini saya mambil alert dari boostraap dan si session ini di masukan atau di slipkan
             //ke dalam page login ,, dengan format $this->session->flashdata('nama pesan sessionnya(message)')
-            $this->session->set_flashdata('message', '<div class="alert alert-success" style="text-align:center;" role="alert"> Selamat anda sudah terdaftar. Langsung Login yah</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" style="text-align:center;" role="alert"> Selamat anda sudah terdaftar</div>');
             redirect('home/login');
             // field email gak ada
         }
@@ -838,7 +844,6 @@ class Home extends CI_Controller
         );
         $this->load->view('template/v_wrapper', $data, FALSE);
     }
-
     //...............................................................................///
 
     //input / tambah role akses

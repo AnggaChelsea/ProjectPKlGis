@@ -1,21 +1,19 @@
 <?php
-if (!defined('BASEPATH')) exit('No direct script access allowed');
+class Peta extends CI_Controller {
 
-class Peta extends CI_Controller
-{
-  public function __construct()
-  {
-    parent::__construct();
-    $this->load->model('m_tps');
-    $this->load->library('form_validation');
-  }
-  public function peta()
-  {
-    $data = array(
-      'title' => 'versi router',
-      'isi' => 'peta/petauser',
-      'data' => $this->m_tps->get_all_data(),
-    );
-    $this->load->view('peta/petauser', $data);
-  }
+        public function getChart()
+        {
+          $data = array(
+            'datachart' => $this->m_tps->get_all_data(),
+            'isi' => 'peta/chart'
+          );
+          $this->load->view('peta/chart', $data);
+        }
+        public function halamanuser()
+        {
+          $data = array(
+            'isi' => 'users/halamanuser',
+          );
+          $this->load->view('users/halamanuser', $data);
+        }
 }

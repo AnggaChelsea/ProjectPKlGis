@@ -19,11 +19,11 @@
                     id: 'mapbox/streets-v11',
                 }).addTo(map);
 
+                
                 <?php foreach($tps as $key) { ?>
-
                 L.marker([<?= $key['latitude']?>, <?= $key['longitude'] ?>]).addTo(map)
                 .bindPopup('<h5><?= $key['nama_sekolah'] ?></h5> </p> <br>lokasi <?= $key['alamat'] ?></br> kecamatan <?= $key['kecamatan'] ?>
-                </br> Kode Coordinate lat & Lng <br><?= $key['latitude'] ?>,&nbsp;<?= $key['longitude'] ?> <br><span class="text-danger"> jalan <?= $key['jalan'] ?> </span>  ')
+                </br> Kode Coordinate lat & Lng <br><?= $key['latitude'] ?>,&nbsp;<?= $key['longitude'] ?>   ')
                 .openPopup();
                 // z
                 <?php } ?>

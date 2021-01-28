@@ -199,19 +199,6 @@
     <script src="<?= base_url() ?>template/assets/js/custom.js"></script>
 
 
-
-    <!--DistanceGrid.js  MarkerCluster.js  MarkerCluster.QuickHull.js  MarkerCluster.Spiderfier.js  
-MarkerClusterGroup.js
-MarkerClusterGroup.Refresh.js
-MarkerOpacity.js
--->
-
-    <!-- link cluster map -->
-    <!--bootstrapp cdn-->
-
-    <!--nav--->
-
-    <!-- General JS Scripts -->
     <script src="<?= base_url() ?>template/assets/modules/jquery.min.js"></script>
     <script src="<?= base_url() ?>template/assets/modules/popper.js"></script>
     <script src="<?= base_url() ?>template/assets/modules/tooltip.js"></script>
