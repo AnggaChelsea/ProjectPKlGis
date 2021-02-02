@@ -32,7 +32,13 @@ class Home extends CI_Controller
         $this->load->view('index', $data, FALSE);
     }
 
-    
+    public function routinguser(){
+        $data = array(
+            'routedata' => $this->m_tps->get_all_data(),
+            'isi' => 'peta/routing'
+        );
+        $this->load->view('peta/routing', $data);
+    }
 
     public function getcartnewschool()
     {
@@ -60,6 +66,14 @@ class Home extends CI_Controller
             'isi' => 'form/daftarmapping'
         );
         $this->load->view('form/daftarmapping', $data, FALSE);
+    }
+
+    //register pemetaan sekolah
+    public function registerpemetaan() {
+        $data = array(
+            'isi' => 'users/register1'
+        );
+        $this->load->view('users/register1', $data);
     }
 
     //!
@@ -181,6 +195,16 @@ class Home extends CI_Controller
         );
         $this->load->view('template/v_head', $data, FALSE);
         $this->load->view('tps/v_pemetaan_tps', $data, FALSE);
+    }
+
+    public function routeruser()
+    {
+        $data = array(
+            'isi' => 'peta/routing',
+            'tps' => $this->m_tps->get_all_data(),
+        );
+       $this->load->view('template/v_head', $data, FALSE);
+       $this->load->view('peta/routing', $data, FALSE);
     }
 
 
@@ -385,6 +409,16 @@ class Home extends CI_Controller
             'user' => $this->user
         );
         $this->load->view('template/v_wrapper', $data, FALSE);
+    }
+
+    public function controlmapuser()
+    {
+        $data = array(
+            'tps' => $this->m_tps->get_all_data(),
+            'isi' => 'peta/searchuser',
+        );
+        $this->load->view('template/v_head', $data, FALSE);
+        $this->load->view('peta/searchuser', $data, FALSE);
     }
 
     public function geojson()
@@ -733,20 +767,7 @@ class Home extends CI_Controller
             'Nama',
             'required|trim'
         );
-        // $this->form_validation->set_rules(
-        //     'dinas',
-        //     'Dinas',
-        //     'required|trim|'
-        // );
-        // $this->form_validati?on->set_rules(
-        //     'email',
-        //     'Email',
-        //     'required|trim|
-        //     valid_email|is_unique[user.email]',
-        //     [
-        //         'is_unique' => 'email ini sudah terdaftar'
-        //     ]
-        // );
+      
         $this->form_validation->set_rules(
             'password1',
             'Password',
@@ -792,6 +813,51 @@ class Home extends CI_Controller
             // field email gak ada
         }
     }
+
+    //registration mapping
+    public function registrationmap()
+    {
+
+        $this->form_validation->set_rules(
+            'npsn',
+            'npsn',
+            'required|trim'
+        );
+
+        if ($this->form_validation->run() == false) {
+
+            $data = array(
+                'isi' => 'users/register1'
+            );
+            $this->load->view('users/register1', $data, FALSE);
+        } else {
+            $data =
+                [
+                    'npsn' => htmlspecialchars($this->input->post('npsn', true)),
+                    'nama_sekolah' => htmlspecialchars($this->input->post('nama_sekolah', true)),
+                    'alamat' => htmlspecialchars($this->input->post('alamat', true)),
+                    'desa'=> htmlspecialchars($this->input->post('desa')),
+                    'kecamatan'=> htmlspecialchars($this->input->post('kecamatan')),
+                    'jumlah_siswa'=> htmlspecialchars($this->input->post('jumlah_siswa')),
+                    'jumlah_guru'=> htmlspecialchars($this->input->post('jumlah_guru')),
+                    'kepala_sekolah'=> htmlspecialchars($this->input->post('kepala_sekolah')),
+                    'akreditasi'=> htmlspecialchars($this->input->post('akreditasi')),
+                    'latitude'=> htmlspecialchars($this->input->post('latitude')),
+                    'longitude'=> htmlspecialchars($this->input->post('longitude')),
+                    
+                ];
+            //dibawah ini 
+            $this->db->insert('mytable', $data, );
+            //dibawah ini saya membuat session jikalau register sudah masuk maka akan timbul alert sprti ini 
+            //ini saya mambil alert dari boostraap dan si session ini di masukan atau di slipkan
+            //ke dalam page login ,, dengan format $this->session->flashdata('npsn pesan sessionnya(message)')
+            $this->session->set_flashdata('message', '<div class="alert alert-success" style="text-align:center;" role="alert"> Selamat Sekolah anda sudah Terpetakan </div>');
+            redirect('tps/v_controlmap');
+            // field email gak ada
+        }
+    }
+
+
     //ini khsus logut
     public function logout()
     {

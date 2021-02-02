@@ -203,7 +203,8 @@ button:hover {
     <div class="container">
         <div class="column1">
         <form action="<?= base_url('home/registration'); ?>" enctype="multipart/form-data" method="POST">
-                <h2>Register with us</h2>
+                <h2>Daftar</h2>
+                
                 <div class="form-control">
                     <label for='username'>Username</label>
                     <input type="text" class="form-control " name="nama" value="<?= set_value('nama'); ?>" placeholder="Exaulia..">

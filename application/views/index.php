@@ -69,8 +69,8 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="<?= base_url('home/useronly'); ?>">Peta Cluster</a>
-                                        <a class="dropdown-item" href="<?= base_url('home/chart') ?>">Peta Routing</a>
-                                        <a class="dropdown-item" href="<?= base_url('home/chart') ?>">Peta Search</a>
+                                        <a class="dropdown-item" href="<?= base_url('home/routeruser') ?>">Peta Routing</a>
+                                        <a class="dropdown-item" href="<?= base_url('home/controlmapuser') ?>">Peta Search</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">
@@ -117,7 +117,7 @@
                     <div class="single_feature_text ">
                         <h4>Buat Apa <br> Web Pemetaan Ini ?</h4>
                         <p>Mari kita sebar Luaskan informasi mengenai ke adaan <b>Jalan</b> Akses ke sekolah di kabupaten Sukabumi
-                        </p><br> <b>Pelosok</b> dan <b>Tidak Terpelosok</b>
+                        </p><br> <b></b> dan <b></b>
                         <a href="<?= base_url() ?>template3/#" class="btn_1">Daftar</a>
                     </div>
                 </div>
@@ -125,8 +125,8 @@
                     <div class="single_feature">
                         <div class="single_feature_part">
                             <span class="single_feature_icon"><i class="ti-layers"></i></span>
-                            <h4>Pelosok</h4>
-                            <p>Jalan Pelosok termasuk akses jalan yang sangat jauh menuju ke sekolah dan tidak bisa di
+                            <h4>Sekolah</h4>
+                            <p>Jalan  termasuk akses yang sangat jauh menuju ke sekolah dan tidak bisa di
                                 lalui oleh kendaraan mobil</p>
                         </div>
                     </div>
@@ -135,7 +135,7 @@
                     <div class="single_feature">
                         <div class="single_feature_part">
                             <span class="single_feature_icon"><i class="ti-new-window"></i></span>
-                            <h4>Tidak Terpelosok</h4>
+                            <h4>Sekolah</h4>
                             <p>Akses Jalan menuju ke sekolah tidak terlalu terjal dan bisa di lalui oleh kendaraan
                                 minimal kendaraan beroda dua</p>
                         </div>
@@ -146,7 +146,7 @@
                         <div class="single_feature_part single_feature_part_2">
                             <span class="single_service_icon style_icon"><i class="ti-light-bulb"></i></span>
                             <h4>Jadikan Informamsi</h4>
-                            <p>Mari Sebar Luaskan informasi mengenai ke adaan sekolah terutama terpelosok</p>
+                            <p>Mari Sebar Luaskan informasi mengenai ke adaan sekolah terutama terpetakan jauh</p>
                         </div>
                     </div>
                 </div>
@@ -159,84 +159,7 @@
 
     <script type="text/javascript" src="<?= base_url() ?>template3/main.js"></script>
 
-    <section class="special_cource padding_top">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-5">
-                    <div class="section_tittle text-center">
-
-                        <p>Sekolah Baru <i class="mdi mdi-application-settings:"></i><i class="mdi mdi-application-cog:"></i></p>
-                        <h2>Beberapa Jalan Ke Sekolah Pelosok</h2>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="row">Set have great you male grasses yielding yielding first their to called deep
-                abundantly Set have great you male
-                <div class="col-sm-6 col-lg-4">
-                    <div class="single_special_cource">
-                        <img src="<?= base_url('./template3/img/sekolah/isolasibanjir.jpeg') ?>" class="special_img" alt="">
-                        <div class="special_cource_text">
-                            <div class="author_rating">
-                                <div class="rating">
-                                    <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                    <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                    <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                    <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                    <a href="#"><img src="img/icon/star.svg" alt=""></a>
-                                </div>
-                                <a href="" class="btn btn-primary">Liat Detail</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-4">
-                    <div class="single_special_cource">
-                        <img src="<?= base_url('./template3/img/sekolah/terisolasianak.jpg') ?>" class="special_img" alt="">
-                        <div class="special_cource_text">
-                            <div class="author_rating">
-                                <div class="rating">
-                                    <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                    <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                    <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                    <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                    <a href="#"><img src="img/icon/star.svg" alt=""></a>
-                                </div>
-                                <a href="" class="btn btn-primary">Liat Detail</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-4">
-                    <div class="single_special_cource">
-                        <img src="<?= base_url('./template3/img/sekolah/terisolasijembatan.jpg') ?>" class="special_img" alt="">
-                        <div class="special_cource_text">
-                            <div class="author_rating">
-                                <div class="rating">
-                                    <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                    <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                    <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                    <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                    <a href="#"><img src="img/icon/star.svg" alt=""></a>
-                                </div>
-                                <a href="" class="btn btn-primary">Liat Detail</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-
-
-        </div>
-        </div>
-        </div>
-        </div>
-    </section>
+    
     <!--::blog_part end::-->
 
     <!-- learning part start-->
@@ -261,7 +184,7 @@
                                 <div class="learning_member_text_iner">
                                     <span class="ti-stamp"></span>
                                     <h4>Best Map School</h4>
-                                    <p>Pemetaan lokasi Sekolah di Map School ini di utamakan sekolah yang terpelosok dan perlu Sekolahnya di aktipkan dan di tingkatkan kembali</p>
+                                    <p>Pemetaan lokasi Sekolah di Map School ini di utamakan sekolah yang jauh untuk terpetakan </p>
                                 </div>
                             </div>
                         </div>
@@ -285,7 +208,7 @@
                 <div class="col-xl-5">
                     <div class="section_tittle text-center">
                         <p>Rekaman Kita</p>
-                        <h2>Lokasi Sekolah yang Terpelosok</h2>
+                        <h2>Lokasi Sekolah yang Terpetakan</h2>
                     </div>
                 </div>
             </div>
